@@ -35,5 +35,20 @@ namespace DemoTCR.Test
             var prix = prixUnitaire.ToString(Imprimante.FormatPrix);
             Assert.Equal(Imprimante.PrixTotal + prix, ticket);
         }
+
+        [Fact]
+        public void TestPrixTotalEtQuantitéFixes()
+        {
+            var prixUnitaire = new decimal(1);
+            const uint quantité = 2U;
+
+            var imprimante = new Imprimante();
+            imprimante.DéfinirPrixUnitaire(prixUnitaire);
+            imprimante.DéfinirQuantité(quantité);
+            var ticket = imprimante.Imprimer();
+
+            var prix = (prixUnitaire * quantité).ToString(Imprimante.FormatPrix);
+            Assert.Equal(Imprimante.PrixTotal + prix, ticket);
+        }
     }
 }

@@ -6,10 +6,11 @@ public class Imprimante
     public const string FormatPrix = "C";
 
     private decimal _prixUnitaire = new (0);
+    private uint _quantité = 1;
 
     public string Imprimer()
     {
-        var prixTotal = _prixUnitaire.ToString(FormatPrix);
+        var prixTotal = (_prixUnitaire * _quantité).ToString(FormatPrix);
         return PrixTotal + prixTotal;
     }
 
@@ -20,5 +21,6 @@ public class Imprimante
 
     public void DéfinirQuantité(uint quantité)
     {
+        _quantité = quantité;
     }
 }
