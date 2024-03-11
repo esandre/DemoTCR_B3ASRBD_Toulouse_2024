@@ -1,5 +1,4 @@
 ﻿using DemoTCR;
 
-var imprimante = new Imprimante(null);
-
-Console.WriteLine(imprimante.Imprimer());
+var imprimante = new Imprimante(new SystemConsole());
+imprimante.Imprimer();

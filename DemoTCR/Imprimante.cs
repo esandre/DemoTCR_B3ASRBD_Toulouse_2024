@@ -13,14 +13,12 @@ public class Imprimante
         _console = console;
     }
 
-    public string Imprimer()
+    public void Imprimer()
     {
         var prixTotal = _article.PrixTotal.ToString(FormatPrix);
         var sortie = PrixTotal + prixTotal;
 
         _console.Write(sortie);
-
-        return sortie;
     }
 
     public void DéfinirPrixUnitaire(decimal prixUnitaire)

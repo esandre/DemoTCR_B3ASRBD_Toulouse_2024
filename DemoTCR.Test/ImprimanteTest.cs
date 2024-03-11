@@ -12,8 +12,8 @@ namespace DemoTCR.Test
             imprimante.Imprimer();
 
             var prix = new decimal(0).ToString(Imprimante.FormatPrix);
-            var résultatObtenu = consoleSpy.Contenu;
-            Assert.Equal(Imprimante.PrixTotal + prix, résultatObtenu);
+            var ticket = consoleSpy.Contenu;
+            Assert.Equal(Imprimante.PrixTotal + prix, ticket);
         }
 
         [Fact]
@@ -22,9 +22,10 @@ namespace DemoTCR.Test
             var consoleSpy = new ConsoleSpy();
             var imprimante = new Imprimante(consoleSpy);
             imprimante.DéfinirQuantité(2U);
-            var ticket = imprimante.Imprimer();
+            imprimante.Imprimer();
 
             var prix = new decimal(0).ToString(Imprimante.FormatPrix);
+            var ticket = consoleSpy.Contenu;
             Assert.Equal(Imprimante.PrixTotal + prix, ticket);
         }
 
@@ -36,9 +37,10 @@ namespace DemoTCR.Test
             var consoleSpy = new ConsoleSpy();
             var imprimante = new Imprimante(consoleSpy);
             imprimante.DéfinirPrixUnitaire(prixUnitaire);
-            var ticket = imprimante.Imprimer();
+            imprimante.Imprimer();
 
             var prix = prixUnitaire.ToString(Imprimante.FormatPrix);
+            var ticket = consoleSpy.Contenu;
             Assert.Equal(Imprimante.PrixTotal + prix, ticket);
         }
 
@@ -52,9 +54,10 @@ namespace DemoTCR.Test
             var imprimante = new Imprimante(consoleSpy);
             imprimante.DéfinirPrixUnitaire(prixUnitaire);
             imprimante.DéfinirQuantité(quantité);
-            var ticket = imprimante.Imprimer();
+            imprimante.Imprimer();
 
             var prix = (prixUnitaire * quantité).ToString(Imprimante.FormatPrix);
+            var ticket = consoleSpy.Contenu;
             Assert.Equal(Imprimante.PrixTotal + prix, ticket);
         }
     }
