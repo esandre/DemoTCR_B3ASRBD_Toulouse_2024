@@ -2,25 +2,33 @@
 
 public class Imprimante
 {
+    private readonly IConsole _console;
     public const string PrixTotal = "Prix Total : ";
     public const string FormatPrix = "C";
 
-    private decimal _prixUnitaire = new (0);
-    private uint _quantité = 1;
+    private readonly Calculatrice _articleUnique = new ();
 
-    public string Imprimer()
+    public Imprimante(IConsole console)
     {
-        var prixTotal = (_prixUnitaire * _quantité).ToString(FormatPrix);
-        return PrixTotal + prixTotal;
+        _console = console;
     }
 
-    public void DéfinirPrixUnitaire(decimal prixUnitaire)
+    public void Imprimer()
     {
-        _prixUnitaire = prixUnitaire;
+        _console.Write(PrixTotal + _articleUnique.PrixTotal.ToString(FormatPrix));
     }
 
-    public void DéfinirQuantité(uint quantité)
+    public void DéfinirPrixUnitaire()
     {
-        _quantité = quantité;
+        var prixUnitaireRaw = _console.Read();
+        var prixUnitaire = decimal.Parse(prixUnitaireRaw);
+        _articleUnique.DéfinirPrixUnitaire(prixUnitaire);
+    }
+
+    public void DéfinirQuantité()
+    {
+        var quantitéRaw = _console.Read();
+        var quantité = uint.Parse(quantitéRaw);
+        _articleUnique.DéfinirQuantité(quantité);
     }
 }
