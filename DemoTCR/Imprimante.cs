@@ -5,22 +5,21 @@ public class Imprimante
     public const string PrixTotal = "Prix Total : ";
     public const string FormatPrix = "C";
 
-    private decimal _prixUnitaire = new (0);
-    private uint _quantité = 1;
+    private readonly Calculatrice _article = new ();
 
     public string Imprimer()
     {
-        var prixTotal = (_prixUnitaire * _quantité).ToString(FormatPrix);
+        var prixTotal = _article.PrixTotal.ToString(FormatPrix);
         return PrixTotal + prixTotal;
     }
 
     public void DéfinirPrixUnitaire(decimal prixUnitaire)
     {
-        _prixUnitaire = prixUnitaire;
+        _article.DéfinirPrixUnitaire(prixUnitaire);
     }
 
     public void DéfinirQuantité(uint quantité)
     {
-        _quantité = quantité;
+        _article.DéfinirQuantité(quantité);
     }
 }
