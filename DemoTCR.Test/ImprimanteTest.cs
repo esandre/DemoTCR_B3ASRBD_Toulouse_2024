@@ -1,3 +1,5 @@
+using DemoTCR.Test.Utilities;
+
 namespace DemoTCR.Test
 {
     public class ImprimanteTest
@@ -5,7 +7,8 @@ namespace DemoTCR.Test
         [Fact]
         public void TestPrixTotalZero()
         {
-            var imprimante = new Imprimante(null);
+            var consoleSpy = new ConsoleSpy();
+            var imprimante = new Imprimante(consoleSpy);
             var ticket = imprimante.Imprimer();
 
             var prix = new decimal(0).ToString(Imprimante.FormatPrix);
@@ -15,7 +18,8 @@ namespace DemoTCR.Test
         [Fact]
         public void TestPrixTotalEtQuantitéZero()
         {
-            var imprimante = new Imprimante(null);
+            var consoleSpy = new ConsoleSpy();
+            var imprimante = new Imprimante(consoleSpy);
             imprimante.DéfinirQuantité(2U);
             var ticket = imprimante.Imprimer();
 
@@ -28,7 +32,8 @@ namespace DemoTCR.Test
         {
             var prixUnitaire = new decimal(1);
 
-            var imprimante = new Imprimante(null);
+            var consoleSpy = new ConsoleSpy();
+            var imprimante = new Imprimante(consoleSpy);
             imprimante.DéfinirPrixUnitaire(prixUnitaire);
             var ticket = imprimante.Imprimer();
 
@@ -42,7 +47,8 @@ namespace DemoTCR.Test
             var prixUnitaire = new decimal(1);
             const uint quantité = 2U;
 
-            var imprimante = new Imprimante(null);
+            var consoleSpy = new ConsoleSpy();
+            var imprimante = new Imprimante(consoleSpy);
             imprimante.DéfinirPrixUnitaire(prixUnitaire);
             imprimante.DéfinirQuantité(quantité);
             var ticket = imprimante.Imprimer();
