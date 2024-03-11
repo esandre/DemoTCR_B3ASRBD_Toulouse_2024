@@ -7,6 +7,10 @@ public class Imprimante
 
     private readonly Calculatrice _article = new ();
 
+    public Imprimante(IConsole console)
+    {
+    }
+
     public string Imprimer()
     {
         var prixTotal = _article.PrixTotal.ToString(FormatPrix);
