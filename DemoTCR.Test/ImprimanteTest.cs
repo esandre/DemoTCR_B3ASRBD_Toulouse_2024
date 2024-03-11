@@ -3,12 +3,13 @@ namespace DemoTCR.Test
     public class ImprimanteTest
     {
         [Fact]
-        public void TestHelloWorld()
+        public void TestPrixTotalZero()
         {
             var imprimante = new Imprimante();
             var ticket = imprimante.Imprimer();
 
-            Assert.Equal(Imprimante.HelloWorld, ticket);
+            var prix = new decimal(0).ToString(Imprimante.FormatPrix);
+            Assert.Equal(Imprimante.PrixTotal + prix, ticket);
         }
     }
 }

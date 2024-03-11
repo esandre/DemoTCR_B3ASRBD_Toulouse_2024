@@ -2,10 +2,11 @@
 
 public class Imprimante
 {
-    public const string HelloWorld = "Hello, world !";
+    public const string PrixTotal = "Prix Total : ";
+    public const string FormatPrix = "C";
 
     public string Imprimer()
     {
-        return HelloWorld;
+        return PrixTotal + "0.00 €";
     }
 }
