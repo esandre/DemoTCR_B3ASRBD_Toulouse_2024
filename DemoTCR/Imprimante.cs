@@ -17,4 +17,8 @@ public class Imprimante
     {
         _prixUnitaire = prixUnitaire;
     }
+
+    public void DéfinirQuantité(uint quantité)
+    {
+    }
 }

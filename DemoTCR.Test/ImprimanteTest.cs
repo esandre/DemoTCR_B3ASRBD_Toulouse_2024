@@ -13,6 +13,17 @@ namespace DemoTCR.Test
         }
 
         [Fact]
+        public void TestPrixTotalEtQuantitéZero()
+        {
+            var imprimante = new Imprimante();
+            imprimante.DéfinirQuantité(2U);
+            var ticket = imprimante.Imprimer();
+
+            var prix = new decimal(0).ToString(Imprimante.FormatPrix);
+            Assert.Equal(Imprimante.PrixTotal + prix, ticket);
+        }
+
+        [Fact]
         public void TestPrixTotalFixe()
         {
             var prixUnitaire = new decimal(1);
