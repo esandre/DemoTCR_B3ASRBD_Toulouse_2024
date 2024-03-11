@@ -2,6 +2,7 @@
 
 public class Imprimante
 {
+    private readonly IConsole _console;
     public const string PrixTotal = "Prix Total : ";
     public const string FormatPrix = "C";
 
@@ -9,12 +10,17 @@ public class Imprimante
 
     public Imprimante(IConsole console)
     {
+        _console = console;
     }
 
     public string Imprimer()
     {
         var prixTotal = _article.PrixTotal.ToString(FormatPrix);
-        return PrixTotal + prixTotal;
+        var sortie = PrixTotal + prixTotal;
+
+        _console.Write(sortie);
+
+        return sortie;
     }
 
     public void DéfinirPrixUnitaire(decimal prixUnitaire)

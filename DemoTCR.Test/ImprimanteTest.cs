@@ -9,10 +9,11 @@ namespace DemoTCR.Test
         {
             var consoleSpy = new ConsoleSpy();
             var imprimante = new Imprimante(consoleSpy);
-            var ticket = imprimante.Imprimer();
+            imprimante.Imprimer();
 
             var prix = new decimal(0).ToString(Imprimante.FormatPrix);
-            Assert.Equal(Imprimante.PrixTotal + prix, ticket);
+            var résultatObtenu = consoleSpy.Contenu;
+            Assert.Equal(Imprimante.PrixTotal + prix, résultatObtenu);
         }
 
         [Fact]
