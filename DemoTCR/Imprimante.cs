@@ -7,6 +7,7 @@ public class Imprimante
 
     public string Imprimer()
     {
-        return PrixTotal + "0.00 €";
+        var prixTotal = new decimal(0).ToString(FormatPrix);
+        return PrixTotal + prixTotal;
     }
 }
